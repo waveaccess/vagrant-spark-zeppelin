@@ -23,7 +23,7 @@ git clone https://github.com/apache/incubator-zeppelin.git ${ZEPPELIN_HOME}
 cd ${ZEPPELIN_HOME}
 # go to a commit I tested and builds correctly
 
-
+export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=512m"
 ${MAVEN_HOME}/bin/mvn clean package -Pspark-1.6 -Dhadoop.version=2.6.0 -Phadoop-2.6 -DskipTests
 
 cat > ${ZEPPELIN_HOME}/conf/zeppelin-env.sh <<CONF
