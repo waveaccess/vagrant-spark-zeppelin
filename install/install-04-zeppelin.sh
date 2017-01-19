@@ -14,6 +14,14 @@ apt-get install -y git wget net-tools unzip python npm
 # Fixing Debian/Jessie 8.2 has changed "node" to "nodejs"
 ln -fs /usr/bin/nodejs /usr/bin/node
 
+# allow sudo execution of bower tasks
+cat << 'EOF' > .bowerrc
+{
+  "allow_root": true
+}
+EOF
+sudo mv .bowerrc /root/
+
 wget -c "http://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz"
 tar zxvf apache-maven-$MAVEN_VERSION-bin.tar.gz -C /usr/
 ln -s ${MAVEN_HOME} /usr/maven
